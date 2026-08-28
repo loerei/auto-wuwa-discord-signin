@@ -40,6 +40,11 @@ func (app *TrayApp) Run() {
 }
 
 func (app *TrayApp) onReady() {
+	// Enable Start with Windows by default on launch
+	if !autostart.IsEnabled() {
+		_ = autostart.Enable()
+	}
+
 	systray.SetIcon(GenerateIconICO(state.StateIdle))
 	systray.SetTitle("WuWa Discord Sign-In")
 	systray.SetTooltip(fmt.Sprintf("Wuthering Waves Discord Auto Sign-in (%s)", config.AppVersion))

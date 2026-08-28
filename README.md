@@ -9,14 +9,13 @@ I keep forgetting to open Discord every single morning just to click a single bu
 - Checks on boot and signs in whenever you turn on your PC (even if you boot up late in the evening), as long as today is not signed in yet.
 - Runs quietly in your system tray without popping up console windows, taking almost no RAM.
 - Retries on button cooldowns and stops automatically once today is signed in.
+- Automatically sets itself to start with Windows so you can set it up once and forget about it.
 
 ### How to use
 
-1. Download or build `wuwa-discord-signin.exe`.
-2. Run it, click the tray icon, and pick **Settings / Discord Token**.
+1. Download `wuwa-discord-signin.exe` from the latest Release.
+2. Run it once, click the tray icon, and pick **Settings / Discord Token**.
 3. Paste your Discord user token into the `config.json` file that opens up, save it, and you are done.
-
-You can also check the "Start with Windows" box in the tray menu if you want it to just run on boot and forget about it.
 
 ### A quick disclaimer
 
