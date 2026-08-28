@@ -13,7 +13,7 @@ I keep forgetting to open Discord every single morning just to click a single bu
 
 ### How to use
 
-1. Download `wuwa-discord-signin.exe` from the latest Release.
+1. Download `wuwa-discord-signin.exe` from the [latest Release](https://github.com/loerei/auto-wuwa-discord-signin/releases/latest).
 2. Run it once, click the tray icon, and pick **Settings / Discord Token**.
 3. Paste your Discord user token into the `config.json` file that opens up, save it, and you are done.
 
