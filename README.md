@@ -20,7 +20,7 @@ I keep forgetting to open Discord every single morning just to click a single bu
 #### Getting your Discord token
 
 - To grab your token easily, use the [discord-get-user-token](https://chromewebstore.google.com/detail/discord-get-user-token/accgjfooejbpdchkfpngkjjdekkcbnfd) Chrome extension (or follow any guide on Google if you prefer).
-- **Important**: Logging out of your account on the web immediately invalidates that token. If you switch accounts often, log in from a spare browser profile, copy the token from there, and leave that browser session alone.
+- **Important**: Logging out of your account on the web immediately invalidates that token. If you switch accounts often, log in from a spare browser profile, copy the token from there, and leave it (closing the browser is fine, no need to keep it open).
 
 ### A quick disclaimer
 
