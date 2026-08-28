@@ -5,19 +5,19 @@ import (
 	_ "embed"
 )
 
-//go:embed assets/kurobot_green.png
+//go:embed assets/icon_green.png
 var iconGreen []byte
 
-//go:embed assets/kurobot_blue.png
+//go:embed assets/icon_blue.png
 var iconBlue []byte
 
-//go:embed assets/kurobot_red.png
+//go:embed assets/icon_red.png
 var iconRed []byte
 
-//go:embed assets/kurobot_gray.png
+//go:embed assets/icon_gray.png
 var iconGray []byte
 
-// GenerateIconPNG returns high-resolution 256x256 transparent Kurobot mascot PNG for the given status.
+// GenerateIconPNG returns high-resolution 256x256 custom W status icon PNG.
 // Status colors:
 // Green: #10B981 (success)
 // Blue:  #3B82F6 (running)
