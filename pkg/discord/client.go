@@ -304,6 +304,24 @@ func (c *Client) PerformInteractionWithGateway(ctx context.Context, guildID, cha
 						chID, _ := d["channel_id"].(string)
 						flags, _ := d["flags"].(float64)
 						content, _ := d["content"].(string)
+						if embeds, ok := d["embeds"].([]interface{}); ok {
+							for _, emb := range embeds {
+								if embMap, ok := emb.(map[string]interface{}); ok {
+									if title, ok := embMap["title"].(string); ok && title != "" {
+										if content != "" {
+											content += "\n"
+										}
+										content += title
+									}
+									if desc, ok := embMap["description"].(string); ok && desc != "" {
+										if content != "" {
+											content += "\n"
+										}
+										content += desc
+									}
+								}
+							}
+						}
 						if chID == channelID && int(flags)&64 != 0 {
 							select {
 							case ephemeralCh <- content:
