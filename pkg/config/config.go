@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	AppVersion             = "v1.0.0"
+	AppVersion             = "v1.0.1"
 	AppDirName             = "WuWaDiscordAuto"
 	DefaultConfigFileName  = "config.json"
 )
