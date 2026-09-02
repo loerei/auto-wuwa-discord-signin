@@ -201,11 +201,14 @@ func (app *TrayApp) schedulerLoop() {
 	ticker := time.NewTicker(interval)
 	defer ticker.Stop()
 
-	for range ticker.C {
-		st, err := state.LoadState()
-		if err == nil && !st.Stopped {
-			now := time.Now()
-			if !state.IsAlreadySignedInToday(st, now) {
+	resetTimer := time.NewTimer(time.Until(state.NextResetTimeUTC8(time.Now())))
+	defer resetTimer.Stop()
+
+	for {
+		select {
+		case <-resetTimer.C:
+			st, err := state.LoadState()
+			if err == nil && !st.Stopped {
 				app.mu.Lock()
 				busy := app.isExecuting
 				app.mu.Unlock()
@@ -213,12 +216,27 @@ func (app *TrayApp) schedulerLoop() {
 					go app.triggerAutomation(false)
 				}
 			}
-		}
+			resetTimer.Reset(time.Until(state.NextResetTimeUTC8(time.Now())))
 
-		newInterval := getInterval()
-		if newInterval != interval {
-			interval = newInterval
-			ticker.Reset(interval)
+		case <-ticker.C:
+			st, err := state.LoadState()
+			if err == nil && !st.Stopped {
+				now := time.Now()
+				if !state.IsAlreadySignedInToday(st, now) {
+					app.mu.Lock()
+					busy := app.isExecuting
+					app.mu.Unlock()
+					if !busy {
+						go app.triggerAutomation(false)
+					}
+				}
+			}
+
+			newInterval := getInterval()
+			if newInterval != interval {
+				interval = newInterval
+				ticker.Reset(interval)
+			}
 		}
 	}
 }

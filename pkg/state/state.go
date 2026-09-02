@@ -42,6 +42,18 @@ func GetLogicalDateUTC8(t time.Time) string {
 	return logicalTime.Format("2006-01-02")
 }
 
+// NextResetTimeUTC8 computes the next exact 04:00:05 AM (UTC+8) occurrence after the given time.
+func NextResetTimeUTC8(now time.Time) time.Time {
+	loc := time.FixedZone("UTC+8", 8*3600)
+	nowUTC8 := now.In(loc)
+
+	target := time.Date(nowUTC8.Year(), nowUTC8.Month(), nowUTC8.Day(), 4, 0, 5, 0, loc)
+	if !nowUTC8.Before(target) {
+		target = target.AddDate(0, 0, 1)
+	}
+	return target
+}
+
 func FormatTimeUTC8(t time.Time) string {
 	loc := time.FixedZone("UTC+8", 8*3600)
 	return t.In(loc).Format("2006-01-02 15:04:05 MST")
