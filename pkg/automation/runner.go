@@ -169,7 +169,9 @@ func (r *Runner) ExecuteSigninCycle(force bool) (state.StateData, error) {
 		}
 
 		// Explicit verification of success confirmation strings
-		if strings.Contains(body, "Sign-in Successful") || strings.Contains(body, "You've already signed in today") {
+		if strings.Contains(body, "Sign-in Successful") ||
+			strings.Contains(body, "You've already signed in today") ||
+			strings.Contains(body, "All event rewards have been claimed") {
 			today := state.GetLogicalDateUTC8(time.Now())
 			if currentState.LastSuccessDate != today {
 				currentState.TotalSuccessDays++
